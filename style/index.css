@@ -1,0 +1,280 @@
+/* General styles */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #191919;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+#manage-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 100px;
+}
+
+h2 {
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+}
+
+label {
+  color: #f0f0f0;
+}
+
+select {
+  padding: 6px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background: #202020;
+  color: #f0f0f0;
+  appearance: base-select;
+}
+
+.status {
+  /* position: absolute;
+  top: 20px;
+  right: 50px; */
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #0070e7;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #045fc1;
+  transform: translateY(-1px);
+}
+
+button:active {
+  background: #004992;
+  transform: translateY(2px);
+}
+
+.x-button {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 50%;
+  padding: 0 0 1px 0;
+
+  background: transparent;
+  border: none;
+  color: #f0f0f0;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.x-button:hover {
+  background-color: #4d4d4d;
+}
+
+#close-create-task-div-button,
+#close-edit-task-div-button,
+#close-view-task-div-button {
+  top: 20px;
+  right: 30px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background: #fff;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul li:hover {
+  background: #f0f0f0;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+}
+
+#root {
+  position: relative;
+}
+
+hr {
+  width: 95%;
+  margin: auto;
+}
+
+#title-underline {
+  width: 250px;
+}
+
+h2,
+h3 {
+  color: #f0f0f0;
+  margin: 0 0 10px 0;
+}
+
+h3 {
+  margin: 0 0 5px 0;
+}
+
+h1 {
+  color: #f0f0f0;
+  text-align: center;
+  margin: 20px 0 2px 0;
+}
+
+p {
+  color: #f0f0f0;
+  font-size: 14px;
+  margin: 5px 0 0 0;
+}
+
+#tasks-div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin: 0 100px;
+}
+
+.task {
+  background: #252525;
+  margin: 10px;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(114, 114, 114, 0.1);
+  position: relative;
+  cursor: pointer;
+}
+
+.task:hover {
+  background-color: #3a3a3a !important;
+}
+
+#create-task-div,
+#edit-task-div,
+#view-task-div {
+  width: 90vw;
+  height: 70vh;
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  background-color: #393939;
+  padding: 30px 30px 30px 30px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+}
+
+#edit-task-div div {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type="text"],
+textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: #202020;
+  color: #f0f0f0;
+}
+
+#task-name-input,
+#task-name {
+  height: 40px;
+  font-size: 20px !important;
+}
+
+#task-description-input,
+#task-description {
+  height: 100%;
+  resize: vertical;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+.mode-copying {
+  background-color: gray !important;
+
+}
+
+.mode-copying:hover {
+  background-color: #0000ff !important;
+  cursor: copy !important;
+}
+
+.mode-copying-button {
+  background-color: #1919a0 !important;
+}
+
+.mode-copying-button:hover {
+  background-color: #0000ff !important;
+}
+
+#task-heading,
+#task-pera {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #252525;
+}
+
+#task-pera {
+  height: 100%;
+}
+
+span {
+  color: #f0f0f0;
+}
+
+/* Responsive styles code should be here */
+@media (max-width: 768px) {
+  #manage-buttons {
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 80px;
+  }
+
+
+  #tasks-div {
+    grid-template-columns: 1fr;
+    place-self: center;
+    margin: 0 80px;
+  }
+}
