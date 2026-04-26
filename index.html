@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mini project assignment</title>
+    <title>Task Manager</title>
+
     <link rel="stylesheet" href="style/index.css" />
   </head>
 
@@ -38,14 +39,16 @@
         <button id="add-task-button">Add The Task</button>
       </div>
 
+
       <div id="view-task-div" class="hidden">
         <h2>Task Viewer</h2>
         <button id="close-view-task-div-button" class="x-button">✖</button>
         <h3 id="task-heading"></h3>
-        <span id="view-status">Status: In Progress</span>
+        <p id="view-status">Status: <span id="view-status-span">In Progress</span></p>
         <p id="task-pera"></p>
         <button id="edit-task-button">Edit Task</button>
       </div>
+
 
       <div id="edit-task-div" class="hidden">
         <h2>Edit The Task</h2>
@@ -67,8 +70,11 @@
 
       <hr>
 
+      <p id="message" class="hidden" style="justify-self: center; font-size: 22px; margin-top: 40px;">No tasks yet — create one!</p>
+
+
       <div id="tasks-div">
-        <div class="task" id="task-1">
+        <!-- <div class="task" id="task-1">
           <button onclick="deleteThisTask(1)" class="x-button">✖</button>
           <h3>Test</h3>
           <p>lorm ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate! Molestias, voluptate.</p>
@@ -78,7 +84,7 @@
           <button onclick="deleteThisTask(2)" class="x-button">✖</button>
           <h3>Do task</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut aperiam quia nihil officia quae sit quis a dolores.</p>
-        </div>
+        </div> -->
 
       </div>
     </div>

@@ -1,4 +1,14 @@
+const colorMap = {
+  'Not Started': 'gray',
+  'In Progress': 'yellow',
+  'Completed': 'limegreen',
+  'On Hold': 'orange',
+  'Blocked': 'red'
+};
+
 function addTaskToDOM(name, status, description, index) {
+  document.getElementById('message').classList.toggle('hidden', TASKS_LIST.length > 0);
+
   const newTaskDiv = document.createElement('div');
   newTaskDiv.classList.add('task');
   newTaskDiv.id = `task-${index}`;
@@ -26,8 +36,7 @@ function addTaskToDOM(name, status, description, index) {
   const newSpan = document.createElement('span');
   newSpan.innerText = ` ${status}`;
   newSpan.classList.add('status');
-  newSpan.style.fontSize = '14px';
-  newSpan.style.color = '#888';
+  newSpan.style.backgroundColor = colorMap[status] || 'black';
 
   const newTaskDescription = document.createElement('p');
   newTaskDescription.textContent = description;
@@ -41,6 +50,7 @@ function addTaskToDOM(name, status, description, index) {
   newTaskDiv.appendChild(newSpan);
   newTaskDiv.appendChild(deleteButton);
   newTaskDiv.appendChild(newTaskDescription);
+  
   TASKS_DIV.appendChild(newTaskDiv);
 }
 
@@ -55,16 +65,24 @@ function createNewTaskInList(name, status, description) {
 
 function deleteThisTask(index, taskName) {
   const confirmation = confirm(`Are you sure you want to delete ${taskName}?`);
-  if (confirmation) {
+  const taskDiv = document.getElementById(`task-${index}`);
+
+  if (taskDiv && confirmation) {
     // Remove from TASKS_LIST
     TASKS_LIST.splice(index, 1);
 
     // Remove from localStorage
     updateLocalStorage();
 
-    // Re-render tasks to update indices and DOM
-    renderAllTasks();
+    // Show task dissappear animaiton
+    taskDiv.classList.add('deleting');
 
+    // Re-render tasks to update indices and DOM
+    setTimeout(() => {
+      renderAllTasks();
+      document.getElementById('message').classList.toggle('hidden', TASKS_LIST.length > 0);
+    }, 700);
+    
   }
 }
 
@@ -92,12 +110,16 @@ function renderAllTasks() {
 }
 
 function openViewDiv(index) {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   CREATE_TASK_DIV.classList.add('hidden');
   EDIT_TASK_DIV.classList.add('hidden');
+  
 
   editingIndex = index;
   TASK_HEADING.innerText = TASKS_LIST[index].name;
-  VIEW_STATUS.innerText = `Status: ${TASKS_LIST[index].status}`;
+  VIEW_STATUS.innerHTML = `Status: <span id="view-status-span">${TASKS_LIST[index].status}</span>`;
+  document.getElementById('view-status-span').classList.add('status');
+  document.getElementById('view-status-span').style.backgroundColor = colorMap[TASKS_LIST[index].status] || 'black';
   TASK_PERA.innerText = TASKS_LIST[index].description;
   VIEW_TASK_DIV.classList.remove('hidden');
 }
@@ -115,7 +137,7 @@ function openEditDiv(index) {
 
 function truncate(description, n) {
   if (!description) return ""; // Handle if description doesn't exist
-  return description.length > n 
-    ? description.slice(0, n) + "..." 
+  return description.length > n
+    ? description.slice(0, n) + "..."
     : description;
 }
