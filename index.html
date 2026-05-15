@@ -12,84 +12,142 @@
 
   <body>
     <div id="root">
-      <h1>Task Manager</h1>
 
-      <hr id="title-underline">
-
-      <div id="manage-buttons">
-        <button id="create-task-button">Create New Task</button>
-        <button id="clone-task-button" class="">Clone A Task</button>
-      </div>
-
-      <div id="create-task-div" class="hidden">
-        <h2>Create A New Task</h2>
-        <button id="close-create-task-div-button" class="x-button">✖</button>
-        <input id="task-name-input" type="text" placeholder="Task Name">
-        <div>
-          <label for="statuses">Status:</label>
-          <select name="statuses" id="create-statuses">
-            <option value="Not Started">Not Started</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Completed">Completed</option>
-            <option value="On Hold">On Hold</option>
-            <option value="Blocked">Blocked</option>
-          </select>
-        </div>
-        <textarea id="task-description-input" type="text" placeholder="Task Description"></textarea>
-        <button id="add-task-button">Add The Task</button>
-      </div>
-
-
-      <div id="view-task-div" class="hidden">
-        <h2>Task Viewer</h2>
-        <button id="close-view-task-div-button" class="x-button">✖</button>
-        <h3 id="task-heading"></h3>
-        <p id="view-status">Status: <span id="view-status-span">In Progress</span></p>
-        <p id="task-pera"></p>
-        <button id="edit-task-button">Edit Task</button>
-      </div>
-
-
-      <div id="edit-task-div" class="hidden">
-        <h2>Edit The Task</h2>
-        <button id="close-edit-task-div-button" class="x-button">✖</button>
-        <input id="task-name" type="text" placeholder="Task Name">
-        <div>
-          <label for="statuses">Status:</label>
-          <select name="statuses" id="statuses">
-            <option value="Not Started">Not Started</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Completed">Completed</option>
-            <option value="On Hold">On Hold</option>
-            <option value="Blocked">Blocked</option>
-          </select>
-        </div>
-        <textarea id="task-description" type="text" placeholder="Task Description"></textarea>
-        <button id="update-task-button">Update Task</button>
-      </div>
-
-      <hr>
-
-      <p id="message" class="hidden" style="justify-self: center; font-size: 22px; margin-top: 40px;">No tasks yet — create one!</p>
-
-
-      <div id="tasks-div">
-        <!-- <div class="task" id="task-1">
-          <button onclick="deleteThisTask(1)" class="x-button">✖</button>
-          <h3>Test</h3>
-          <p>lorm ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate! Molestias, voluptate.</p>
+      <div id="left-nav" class="nav-expanded">
+        <div class="left-nav-items" id="nav-menu-button">
+          <img class="nav-icon" src="assets/icons/open-menu.png" style="padding: 5px;">
+          <span class="nav-label">Menu-Toggle</span>
         </div>
 
-        <div class="task" id="task-2">
-          <button onclick="deleteThisTask(2)" class="x-button">✖</button>
-          <h3>Do task</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut aperiam quia nihil officia quae sit quis a dolores.</p>
-        </div> -->
+        <div class="left-nav-items" id="nav-home-button">
+          <img class="nav-icon" src="assets/icons/home.png" style="padding: 5px;">
+          <span class="nav-label">Home</span>
+        </div>
+
+        <div class="left-nav-items create-task-buttons">
+          <img class="nav-icon" src="assets/icons/create.png" style="padding: 5px;">
+          <span class="nav-label">Create</span>
+        </div>
+
+        <div class="left-nav-items">
+          <img class="nav-icon" src="assets/icons/plus.png" style="padding: 5px;">
+          <span class="nav-label">Plus</span>
+        </div>
+
+        <div class="left-nav-items">
+          <img class="nav-icon" src="assets/icons/delete.png" style="padding: 5px;">
+          <span class="nav-label">Delete</span>
+        </div>
+
+        <div class="left-nav-items">
+          <img class="nav-icon" src="assets/icons/setting.png" style="padding: 5px;">
+          <span class="nav-label">Setting</span>
+        </div>
+
 
       </div>
+
+
+      <div id="app-container">
+
+        <div id="single-task-panel">
+
+          <div id="create-task-div" class="hidden">
+            <h2>Create A New Task</h2>
+            <button id="close-create-task-div-button" class="x-button">✖</button>
+            <input id="task-name-input" type="text" placeholder="Task Name">
+            <div>
+              <label for="statuses">Status:</label>
+              <select name="statuses" id="create-statuses">
+                <option value="Not Started">Not Started</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+                <option value="On Hold">On Hold</option>
+                <option value="Blocked">Blocked</option>
+              </select>
+            </div>
+            <textarea id="task-description-input" type="text" placeholder="Task Description"></textarea>
+            <button id="add-task-button">Add The Task</button>
+          </div>
+
+
+          <div id="view-task-div" class="hidden">
+            <h2>Task Viewer</h2>
+            <button id="close-view-task-div-button" class="x-button">✖</button>
+            <h3 id="task-heading"></h3>
+            <p id="view-status">Status: <span id="view-status-span">In Progress</span></p>
+            <p id="task-pera"></p>
+            <button id="edit-task-button">Edit Task</button>
+          </div>
+
+
+          <div id="edit-task-div" class="hidden">
+            <h2>Edit The Task</h2>
+            <button id="close-edit-task-div-button" class="x-button">✖</button>
+            <input id="task-name" type="text" placeholder="Task Name">
+            <div>
+              <label for="statuses">Status:</label>
+              <select name="statuses" id="statuses">
+                <option value="Not Started">Not Started</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+                <option value="On Hold">On Hold</option>
+                <option value="Blocked">Blocked</option>
+              </select>
+            </div>
+            <textarea id="task-description" type="text" placeholder="Task Description"></textarea>
+            <button id="update-task-button">Update Task</button>
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <div id="home-panel" class="">
+          <h1>Task Manager</h1>
+
+          <hr id="title-underline">
+
+          <div id="manage-buttons">
+            <button id="create-task-button" class="create-task-buttons">Create New Task</button>
+            <button id="clone-task-button" class="">Clone A Task</button>
+          </div>
+
+          <hr>
+
+          <p id="message" class="hidden" style="justify-self: center; font-size: 22px; margin-top: 40px;">No tasks yet —
+            create one!</p>
+
+
+          <div id="tasks-div">
+            <!-- <div class="task" id="task-1">
+              <button onclick="deleteThisTask(1)" class="x-button">✖</button>
+              <h3>Test</h3>
+              <p>lorm ipsum dolor sit amet consectetur adipisicing elit. Voluptas, voluptate! Molestias, voluptate.</p>
+            </div>
+
+            <div class="task" id="task-2">
+              <button onclick="deleteThisTask(2)" class="x-button">✖</button>
+              <h3>Do task</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut aperiam quia nihil officia quae sit quis a dolores.</p>
+            </div> -->
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
+
+
     <script src="src/utils.js"></script>
     <script src="src/index.js"></script>
   </body>
+
+  <!-- started at 25 April, 2026 at 11:13PM -->
 
 </html>

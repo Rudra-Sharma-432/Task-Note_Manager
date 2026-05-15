@@ -26,7 +26,7 @@ function addTaskToDOM(name, status, description, index) {
       cloning = false;
       CLONE_TASK_BUTTON.classList.remove('mode-copying-button');
     } else {
-      openViewDiv(index);
+      openEditDiv(index);
     }
   });
 
@@ -81,7 +81,7 @@ function deleteThisTask(index, taskName) {
     setTimeout(() => {
       renderAllTasks();
       document.getElementById('message').classList.toggle('hidden', TASKS_LIST.length > 0);
-    }, 700);
+    }, 500);
     
   }
 }
@@ -109,24 +109,24 @@ function renderAllTasks() {
   });
 }
 
-function openViewDiv(index) {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  CREATE_TASK_DIV.classList.add('hidden');
-  EDIT_TASK_DIV.classList.add('hidden');
-  
-
-  editingIndex = index;
-  TASK_HEADING.innerText = TASKS_LIST[index].name;
-  VIEW_STATUS.innerHTML = `Status: <span id="view-status-span">${TASKS_LIST[index].status}</span>`;
-  document.getElementById('view-status-span').classList.add('status');
-  document.getElementById('view-status-span').style.backgroundColor = colorMap[TASKS_LIST[index].status] || 'black';
-  TASK_PERA.innerText = TASKS_LIST[index].description;
-  VIEW_TASK_DIV.classList.remove('hidden');
-}
+// function openViewDiv(index) {
+//   window.scrollTo({ top: 0, behavior: 'smooth' });
+//   CREATE_TASK_DIV.classList.add('hidden');
+//   EDIT_TASK_DIV.classList.add('hidden');
+//   
+// 
+//   editingIndex = index;
+//   TASK_HEADING.innerText = TASKS_LIST[index].name;
+//   VIEW_STATUS.innerHTML = `Status: <span id="view-status-span">${TASKS_LIST[index].status}</span>`;
+//   document.getElementById('view-status-span').classList.add('status');
+//   document.getElementById('view-status-span').style.backgroundColor = colorMap[TASKS_LIST[index].status] || 'black';
+//   TASK_PERA.innerText = TASKS_LIST[index].description;
+//   VIEW_TASK_DIV.classList.remove('hidden');
+// }
 
 function openEditDiv(index) {
   CREATE_TASK_DIV.classList.add('hidden');
-  VIEW_TASK_DIV.classList.add('hidden');
+  // VIEW_TASK_DIV.classList.add('hidden');
 
   editingIndex = index;
   document.getElementById('task-name').value = TASKS_LIST[index].name;
