@@ -64,7 +64,7 @@ function createNewTaskInList(name, status, description) {
 }
 
 function deleteThisTask(index, taskName) {
-  const confirmation = confirm(`Are you sure you want to delete ${taskName}?`);
+  const confirmation = confirm(`Are you sure you want to delete '${taskName}'?`);
   const taskDiv = document.getElementById(`task-${index}`);
 
   if (taskDiv && confirmation) {
